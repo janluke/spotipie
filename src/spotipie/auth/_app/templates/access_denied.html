@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}Access denied to Spotify user account{% endblock %}
+
+{% block body_class %}access-denied{% endblock %}
+{% block content %}
+    <div id="content">
+        <i class="icon fas fa-user-times"></i>
+        <div class="main-text">
+            <b>Access to Spotify user account denied</b>
+        </div>
+        <div class="secondary-text">
+            You didn't authorize {{ app_name }} to connect to your Spotify account.
+        </div>
+    </div>
+{% endblock %}

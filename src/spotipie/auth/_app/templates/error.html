@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block head %}
+    <title>{{ title }}</title>
+    {{ super() }}
+{% endblock %}
+
+{% block body_class %}error{% endblock %}
+{% block content %}
+    <div id="content">
+       <i class="icon fas fa-times-circle"></i>
+        <div class="main-text">
+            <b>{{ title or "Error during authorization." }}</b>
+        </div>
+        <div class="secondary-text">
+            {{ error }}<br/>
+        </div>
+    </div>
+{% endblock %}
