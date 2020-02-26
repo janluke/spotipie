@@ -25,7 +25,7 @@ year = '2019'
 copyright = '{0}, {1}'.format(year, author)
 
 # The short X.Y version
-version = 'version = release = '0.1.1''
+version = '0.1.1'
 # The full version, including alpha/beta/rc tags
 release = version
 
