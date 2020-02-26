@@ -1,4 +1,4 @@
-sphinx
+sphinx>=2.1
 better-apidoc
 sphinx-autodoc-typehints
 sphinx-autorun
