@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spotify Web API Callback</title>
+</head>
+<body>
+    <script>
+        a = document.createElement('a')
+        a.href = location.href
+        if (a.search)
+            location.href = "{{ redirect_url }}" + location.search
+        else
+            location.href = "{{ redirect_url }}?" + location.hash.substr(1)
+    </script>
+</body>
+</html>

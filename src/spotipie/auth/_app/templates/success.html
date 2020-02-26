@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% if app_name %}
+    {% set app_span = '<span class="app-name">' + app_name + '</span>' %}
+{% endif %}
+
+{% block title %}Spotify authorization completed{% endblock %}
+
+{% block body_class %}access-granted{% endblock %}
+{% block content %}
+    <div id="content">
+        <i class="icon fab fa-spotify"></i>
+        <div class="main-text">
+            Hello, <span class="username">{{ user.id }}</span>!
+            <br><br>
+            {% if not app_name %}
+                The app
+            {% else %}
+                {{ app_span | safe }}
+            {% endif %}
+                is now connected to your Spotify account.
+                You can close this tab and go back to it.
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+/*
+Spotify official colors:
+    #1db954 (green)
+    #191414 (black)
+    #ffffff (white)
+*/
+
+body {
+    height: 100%;
+    margin: 0;
+    color: white;
+    font-family: Sans-Serif;
+}
+
+body.access-granted { background: #1db954; }
+body.access-denied  { background: #0b0b0b; }
+body.error { background: #b44b40; }
+
+
+#content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 50em;
+    padding: 1em 2em;
+}
+
+.icon {
+    font-size: 3.5em;
+    padding: 0px;
+}
+
+.main-text {
+    margin-top: 1.5em;
+    margin-bottom: 1.25em;
+    font-size: 1.75em;
+    font-weight: normal;
+}
+
+.secondary-text {
+    font-size: 1.3em;
+    margin-top: 1em;
+}
+
+span.app-name { font-weight: bold; }
+span.username { font-weight: bold; }
