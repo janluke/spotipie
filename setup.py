@@ -20,7 +20,7 @@ def read(*names, **kwargs):
 
 setup(
     name='spotipie',
-    version='0.1.0',
+    version='0.1.1',
     license='MIT license',
     description='Another client for the Spotify Web API',
     long_description='%s\n%s' % (
