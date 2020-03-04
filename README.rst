@@ -110,7 +110,7 @@ For scripts and desktop application... it's more complicated. The recommended fl
 
 It's not recommended to distribute your code with your API secret key in it, so both the client credentials flow and the authorization code flow should not be used, unless you ask your users to use their own API keys; this can be acceptable if your target users are other developers. 
 
-The *implicit grant flow* was designed for apps that run in the browser but has been used for "native apps" since it doesn't need the client secret key; unfortunately, for native apps, it's neither very safe nor convenient from a user perspective since the authorization is not refreshable.
+The *implicit grant flow* was designed for apps that run in the browser but has been used for "native apps" too since it doesn't need the client secret key; unfortunately, for native apps, it's neither very safe nor convenient from a user perspective since the authorization is not refreshable.
 
 Examples
 --------
