@@ -84,20 +84,41 @@ otherwise::
 Usage
 =====
 You first need to create an OAuth2 session and obtain an authorization token for it.
-There's a different OAuth2 session class for each of the three OAuth2 authorization flows
-supported by the Spotify API (see `Authorization Flows <https://developer.spotify.com/documentation/general/guides/authorization-guide/>`_):
+Then you can wrap the session with a ``Spotify`` object::
+
+    spotify = Spotify(session)
+
+
+The ``Spotify`` constructor takes whatever behaves like a ``requests.Session``. 
+``spotipie`` implements a different session class for each of the three OAuth2 authorization flows
+supported by the Spotify API (see `Authorization Flows <https://developer.spotify.com/documentation/general/guides/authorization-guide/>`_); these classes are built on top of ``requests_oauthlib.OAuth2Session`` (by composition, not inheritance):
 
 - ``ClientCredentialsSession``
 - ``AuthorizationCodeSession``
 - ``ImplicitGrantSession``
 
-Then you can wrap the session with a ``Spotify`` object.
+These classes make even easier than ``requests_oauthlib.OAuth2Session`` to obtain a token (see examples below).
+
+What OAuth2 flow should I use?
+------------------------------
+A backend web application should use: 
+
+- the *client credentials flow* if it doesn't need access to private user data;
+- the *authorization code flow* otherwise.
+
+For scripts and desktop application... it's more complicated. The recommended flow in this case is *"Authorization code with PKCE"* but it's not supported by Spotify at the time I'm writing this. 
+
+It's not recommended to distribute your code with your API secret key in it, so both the client credentials flow and the authorization code flow should not be used, unless you ask your users to use their own API keys; this can be acceptable if your target users are other developers. 
+
+The *implicit grant flow* was designed for apps that run in the browser but has been used for "native apps" since it doesn't need the client secret key; unfortunately, for native apps, it's neither very safe nor convenient from a user perspective since the authorization is not refreshable.
 
 Examples
 --------
+All the examples assume your API credentials and redirect URI are stored as environment variables.
+
 - `Client credentials flow <https://github.com/janLuke/spotipie/blob/master/docs/examples/client_credentials.py>`_
-- `Authorization code flow for desktop apps <https://github.com/janLuke/spotipie/blob/master/docs/examples/desktop_app_authorization_code.py>`_
-- `Implicit grant flow for desktop apps <https://github.com/janLuke/spotipie/blob/master/docs/examples/desktop_app_implicit_grant.py>`_
+- `Authorization code flow for scripts / desktop apps <https://github.com/janLuke/spotipie/blob/master/docs/examples/desktop_app_authorization_code.py>`_
+- `Implicit grant flow for scripts / desktop apps <https://github.com/janLuke/spotipie/blob/master/docs/examples/desktop_app_implicit_grant.py>`_
 - `Flask web app (authorization code flow) <https://github.com/janLuke/spotipie/blob/master/docs/examples/flask_authorization_code.py>`_
 
 Documentation
