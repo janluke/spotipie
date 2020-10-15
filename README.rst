@@ -118,7 +118,7 @@ Usage
     spotify = Spotify(session)
     results = spotify.search('symphony', obj_type='playlist')
 
-   See the API of the client here <http://localhost:63342/spotipie/docs/_build/api/spotipie.client.html#spotipie.client.Spotify>`
+   See the API of the client `here <https://spotipie.readthedocs.io/en/latest/api/spotipie.html#spotipie.Spotify>`_.
 
 
 What OAuth2 flow should I use?
