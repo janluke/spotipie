@@ -191,7 +191,7 @@ class Spotify(object):
                 *Optional*. The index of the first track to return. Default: 0 (the first object).
                 Use with limit to get the next set of tracks.
             market:
-                *Optional*. An `ISO 3166-1 alpha-2 country code
+                *Optional*. An ISO 3166-1 alpha-2 country code
         """
         return self._get(url='/albums/{id}/tracks'.format(id=album_id),
                          params=dict(limit=limit, offset=offset, market=market))
@@ -205,7 +205,7 @@ class Spotify(object):
             ids:
                 *Required*. A list of the Spotify IDs. Maximum: 20 IDs.
             market:
-                *Optional*. An `ISO 3166-1 alpha-2 country code
+                *Optional*. An ISO 3166-1 alpha-2 country code
         """
         return self._get(url='/albums', params=dict(ids=ids, market=market))['albums']
 
@@ -234,7 +234,7 @@ class Spotify(object):
                 For example:
                 ``include_groups=album,single``.
             market:
-                *Optional*. An `ISO 3166-1 alpha-2 country code
+                *Optional*. An `ISO 3166-1 alpha-2 country code\
                 <http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>`__ or the string ``from_token``.
                 Supply this parameter to limit the response_args to one particular geographical
                 market.
@@ -260,7 +260,7 @@ class Spotify(object):
         Args:
             artist_id:
             market:
-                *Required*. An `ISO 3166-1 alpha-2 country code
+                *Required*. An `ISO 3166-1 alpha-2 country code\
                 <http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>`__ or the string ``from_token``.
         """
         return self._get(url='/artists/{id}/top-tracks'.format(id=artist_id),
@@ -302,13 +302,13 @@ class Spotify(object):
                 <https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids>`__
                 for the category.
             country:
-                *Optional*. A country: an `ISO 3166-1 alpha-2 country code
+                *Optional*. A country: an `ISO 3166-1 alpha-2 country code\
                 <http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>`__. Provide this parameter to
                 ensure that the category exists for a particular country.
             locale:
                 *Optional*. The desired language, consisting of an `ISO 639-1
-                <http://en.wikipedia.org/wiki/ISO_639-1>`__ language code and an `ISO 3166-1
-                alpha-2 country code <http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>`__, joined
+                <http://en.wikipedia.org/wiki/ISO_639-1>`__ language code and an
+                `ISO 3166-1 alpha-2 country code <http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>`__, joined
                 by an underscore. For example: ``es_MX``, meaning "Spanish (Mexico)". Provide this
                 parameter if you want the category strings returned in a particular language. Note
                 that, if ``locale`` is not supplied, or if the specified language is not available,
@@ -355,8 +355,8 @@ class Spotify(object):
                 want to narrow the list of returned categories to those relevant to a particular
                 country. If omitted, the returned items will be globally relevant.
             locale:
-                *Optional*. The desired language, consisting of an `ISO 639-1
-                <http://en.wikipedia.org/wiki/ISO_639-1>`__ language code and an `ISO 3166-1
+                *Optional*. The desired language, consisting of an `ISO 639-1\
+                <http://en.wikipedia.org/wiki/ISO_639-1>`__ language code and an `ISO 3166-1\
                 alpha-2 country code <http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>`__, joined
                 by an underscore. For example: ``es_MX``, meaning “Spanish (Mexico)”. Provide this
                 parameter if you want the category metadata returned in a particular language. Note
@@ -385,7 +385,7 @@ class Spotify(object):
         Args:
             locale:
                 *Optional*. The desired language, consisting of a lowercase `ISO 639-1 language
-                code <http://en.wikipedia.org/wiki/ISO_639-1>`__ and an uppercase `ISO 3166-1
+                code <http://en.wikipedia.org/wiki/ISO_639-1>`__ and an uppercase `ISO 3166-1\
                 alpha-2 country code <http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>`__, joined
                 by an underscore. For example: ``es_MX``, meaning “Spanish (Mexico)”. Provide this
                 parameter if you want the results returned in a particular language (where
@@ -1311,7 +1311,7 @@ class Spotify(object):
 
         Args:
             playlist_id:
-                The `Spotify ID
+                The `Spotify ID\
                 <https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids>`__
                 for the playlist.
             fields:
@@ -1324,7 +1324,7 @@ class Spotify(object):
                 parentheses to drill down into nested objects, for example:
                 ``fields="tracks.items(track(name,href,album(name,href)))"``. Fields can be excluded
                 by enclosing them inside parenthesis starting with an exclamation mark, e.g.
-                 ``(!field1,field2)``
+                ``(!field1,field2)``
             market:
                 *Optional*. An `ISO 3166-1 alpha-2 country code
                 <http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>`__ or the string ``from_token``.
@@ -1516,7 +1516,7 @@ class Spotify(object):
 
         Args:
             track_id:
-                *Required*. The `Spotify ID
+                *Required*. The `Spotify ID\
                 <https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids>`__
                 for the track.
         """
@@ -1527,9 +1527,10 @@ class Spotify(object):
         Get audio feature information for a single track identified by its unique Spotify ID.
         https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/
         https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/
+
         Args:
             track_id:
-                *Required*. The `Spotify ID
+                *Required*. The `Spotify ID\
                 <https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids>`__
                 for the track.
         """

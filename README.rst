@@ -1,5 +1,5 @@
 ========
-Overview
+Spotipie
 ========
 
 .. start-badges
@@ -70,6 +70,8 @@ from the browser to your app.
 
 * Free software: MIT license
 
+.. contents::
+
 Installation
 ============
 If you don't need the authorization flask app::
@@ -83,37 +85,65 @@ otherwise::
 
 Usage
 =====
-You first need to create an OAuth2 session and obtain an authorization token for it.
-Then you can wrap the session with a ``Spotify`` object::
+
+1. Obtain your credentials as described
+   `here <https://developer.spotify.com/documentation/web-api/quick-start/>`_.
+
+2. (Optional) Store your credentials and redirection URI as environment variables:
+
+   - ``SPOTIPIE_CLIENT_ID``
+   - ``SPOTIPIE_CLIENT_SECRET``
+   - ``SPOTIPIE_REDIRECT_URI``;
+
+   you could also use another prefix, ``SPOTIPIE`` is just the default one.
+
+3. To use the ``spotipie.Spotify`` client you first need to create an HTTP session
+   and authenticate it. The ``Spotify`` constructor takes whatever behaves like
+   a ``requests.Session``.
+   ``spotipie`` provides one session class for each of the three OAuth2
+   authorization flows supported by the Spotify API (see
+   `Authorization Flows <https://developer.spotify.com/documentation/general/guides/authorization-guide/>`_);
+   these classes are built on top of ``requests_oauthlib.OAuth2Session``
+   (by composition, not inheritance):
+
+   - ``ClientCredentialsSession``
+   - ``AuthorizationCodeSession``
+   - ``ImplicitGrantSession``
+
+   To see how to create a session, see the `Examples`_.
+
+4. Once you have an authenticated session, you can wrap it with the client and
+   you're ready to make any API call you want::
 
     spotify = Spotify(session)
+    results = spotify.search('symphony', obj_type='playlist')
 
+    See the API of the client here <http://localhost:63342/spotipie/docs/_build/api/spotipie.client.html#spotipie.client.Spotify>`
 
-The ``Spotify`` constructor takes whatever behaves like a ``requests.Session``. 
-``spotipie`` implements a different session class for each of the three OAuth2 authorization flows
-supported by the Spotify API (see `Authorization Flows <https://developer.spotify.com/documentation/general/guides/authorization-guide/>`_); these classes are built on top of ``requests_oauthlib.OAuth2Session`` (by composition, not inheritance):
-
-- ``ClientCredentialsSession``
-- ``AuthorizationCodeSession``
-- ``ImplicitGrantSession``
-
-These classes make even easier than ``requests_oauthlib.OAuth2Session`` to obtain a token (see examples below).
 
 What OAuth2 flow should I use?
 ------------------------------
-A backend web application should use: 
+A backend web application should use:
 
 - the *client credentials flow* if it doesn't need access to private user data;
 - the *authorization code flow* otherwise.
 
-For scripts and desktop application... it's more complicated. The recommended flow in this case is *"Authorization code with PKCE"* but it's not supported by Spotify at the time I'm writing this. 
+For scripts and desktop application... it's more complicated. The recommended
+flow in this case is *"Authorization code with PKCE"* but it's not supported by
+Spotify at the time I'm writing this.
 
-It's not recommended to distribute your code with your API secret key in it, so both the client credentials flow and the authorization code flow should not be used, unless you ask your users to use their own API keys; this can be acceptable if your target users are other developers. 
+It's not recommended to distribute your code with your API secret key in it, so
+both the client credentials flow and the authorization code flow should not be
+used, unless you ask your users to use their own API keys; this can be acceptable
+if your target users are other developers.
 
-The *implicit grant flow* was designed for apps that run in the browser but has been used for "native apps" too since it doesn't need the client secret key; unfortunately, for native apps, it's neither very safe nor convenient from a user perspective since the authorization is not refreshable.
+The *implicit grant flow* was designed for apps that run in the browser but has
+been used for "native apps" too since it doesn't need the client secret key;
+unfortunately, for native apps, it's neither very safe nor convenient from a
+user perspective since the authorization is not refreshable.
 
 Examples
---------
+========
 All the examples assume your API credentials and redirect URI are stored as environment variables.
 
 - `Client credentials flow <https://github.com/janLuke/spotipie/blob/master/docs/examples/client_credentials.py>`_
@@ -121,9 +151,9 @@ All the examples assume your API credentials and redirect URI are stored as envi
 - `Implicit grant flow for scripts / desktop apps <https://github.com/janLuke/spotipie/blob/master/docs/examples/desktop_app_implicit_grant.py>`_
 - `Flask web app (authorization code flow) <https://github.com/janLuke/spotipie/blob/master/docs/examples/flask_authorization_code.py>`_
 
-Documentation
+API Reference
 =============
-https://spotipie.readthedocs.io/
+https://spotipie.readthedocs.io/en/latest/api/spotipie.html
 
 
 

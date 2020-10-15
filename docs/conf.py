@@ -13,8 +13,8 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import sys
+sys.path.insert(0, os.path.abspath('.'))
 
 
 # -- Project information -----------------------------------------------------
@@ -144,7 +144,6 @@ man_pages = [
 # ==========================
 intersphinx_mapping = {
     'python': ('https://docs.python.org/', None),
-    'numpy': ('https://docs.scipy.org/doc/numpy/', None),
 }
 
 # ==========================
@@ -175,21 +174,19 @@ def run_apidoc(app):
     file_dir = os.path.abspath(os.path.dirname(__file__))
     better_apidoc.main([
         'better-apidoc',
-        '-t',
-        os.path.join(file_dir, '_templates', 'apidoc'),
+        '-t', os.path.join(file_dir, '_templates', 'apidoc'),
         '--force',
         '--no-toc',
         '--separate',
-        '-o',
-        os.path.join(file_dir, 'api'),
+        '-o', os.path.join(file_dir, 'api'),
         os.path.abspath(os.path.join(file_dir, '..', 'src', 'spotipie')),
     ])
     # replace the title of the main api file from $(PACKAGE) to $(API_SECTION)
     api_srt_path = os.path.join(file_dir, 'api', 'spotipie.rst')
     with open(api_srt_path) as f:
         lines = f.readlines()
-    lines[0] = 'spotipie API\n'
-    lines[1] = '=' * len(lines[0]) +  '\n'
+    lines[0] = 'API Reference\n'
+    lines[1] = '=' * len(lines[0]) + '\n'
     with open(api_srt_path, 'w') as fout:
         fout.writelines(lines)
 
