@@ -185,7 +185,7 @@ def run_apidoc(app):
     api_srt_path = os.path.join(file_dir, 'api', 'spotipie.rst')
     with open(api_srt_path) as f:
         lines = f.readlines()
-    lines[0] = 'spotipie API\n'
+    lines[0] = 'API Reference\n'
     lines[1] = '=' * len(lines[0]) + '\n'
     with open(api_srt_path, 'w') as fout:
         fout.writelines(lines)
