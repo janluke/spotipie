@@ -46,8 +46,8 @@ class InsufficientScope(SpotipieException):
     Raised when Spotipie catches that the scope of the session is not sufficient to carry out an
     API request **before** the actual request is made.
 
-    Important notice
-    ----------------
+    # Important notice
+
     Please, note that not all the errors caused by insufficient scope can be caught before a
     request is made: when this check is not possible and the scope is insufficient, an
     :class:~spotipie.errors.HttpError` is raised instead. So, make sure you include ``HttpError``
