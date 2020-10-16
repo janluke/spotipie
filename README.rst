@@ -87,7 +87,7 @@ Usage
 =====
 
 1. Obtain your credentials as described
-   `here <https://developer.spotify.com/documentation/web-api/quick-start/>`_.
+   `here <https://developer.spotify.com/documentation/web-api/quick-start/>`__.
 
 2. (Optional) Store your credentials and redirection URI as environment variables:
 
@@ -118,7 +118,7 @@ Usage
     spotify = Spotify(session)
     results = spotify.search('symphony', obj_type='playlist')
 
-   See the API of the client `here <https://spotipie.readthedocs.io/en/latest/api/spotipie.html#spotipie.Spotify>`_.
+   See the API of the client `here <https://spotipie.readthedocs.io/en/latest/api/spotipie.html#spotipie.Spotify>`__.
 
 
 What OAuth2 flow should I use?
