@@ -14,7 +14,7 @@ Spotipie
       - | |version| |wheel| |supported-versions|
 
 .. |docs| image:: https://readthedocs.org/projects/spotipie/badge/?style=flat
-    :target: https://readthedocs.org/projects/spotipie
+    :target: https://spotipie.readthedocs.io/en/stable/
     :alt: Documentation Status
 
 .. |travis| image:: https://travis-ci.org/janLuke/spotipie.svg?branch=master
