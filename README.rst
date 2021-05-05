@@ -4,14 +4,7 @@ Spotipie
 
 .. start-badges
 
-.. list-table::
-    :stub-columns: 1
-    :widths: 1 4
-
-    * - docs
-      - |docs|
-    * - package
-      - | |version| |wheel| |supported-versions|
+|version| |wheel| |supported-versions| |docs|
 
 .. |docs| image:: https://readthedocs.org/projects/spotipie/badge/?style=flat
     :target: https://spotipie.readthedocs.io/en/stable/
