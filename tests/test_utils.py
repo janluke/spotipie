@@ -30,13 +30,22 @@ def test_resource_info_from_uri_raises(uri, case):
         ResourceInfo.from_uri(uri)
 
 
-@pytest.mark.parametrize(
-    'url', [
+@pytest.mark.parametrize(('url', 'info'), [
+    (
         'https://open.spotify.com/playlist/4Z8bvNgj0iTiBMmFakQMgN',
-        'https://open.spotify.com/user/spotify/playlist/4Z8bvNgj0iTiBMmFakQMgN'
-    ])
-def test_from_url_is_the_inverse_of_to_url(url):
-    assert ResourceInfo.from_url(url).url == url
+        ResourceInfo('playlist', id='4Z8bvNgj0iTiBMmFakQMgN')
+    ),
+    (
+        'https://open.spotify.com/user/spotify/playlist/4Z8bvNgj0iTiBMmFakQMgN',
+        ResourceInfo('playlist', id='4Z8bvNgj0iTiBMmFakQMgN', owner_id='spotify')
+    ),
+    (
+        'https://open.spotify.com/track/1iqBhD4XHSL8iGkYsmh72V?si=88a66818f73e49c5',
+        ResourceInfo('track', id='1iqBhD4XHSL8iGkYsmh72V')
+    )
+])
+def test_resource_info_from_url(url, info):
+    assert ResourceInfo.from_url(url) == info
 
 
 @pytest.mark.parametrize(

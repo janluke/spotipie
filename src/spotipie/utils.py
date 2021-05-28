@@ -5,6 +5,7 @@ __all__ = [
 
 import pprint
 from typing import Iterable, Tuple
+from urllib.parse import urlparse
 
 import urllib3
 from attr import attrib, attrs
@@ -13,6 +14,7 @@ from cachecontrol import CacheControlAdapter
 from spotipie.exceptions import ResourceTypeMismatch
 
 OPEN_SPOTIFY_URL = 'https://open.spotify.com'
+OPEN_SPOTIFY_NETLOC = urlparse(OPEN_SPOTIFY_URL).netloc
 RESOURCE_TYPES = frozenset(['track', 'album', 'artist', 'playlist', 'user'])
 
 
@@ -80,9 +82,10 @@ class ResourceInfo:
 
     @staticmethod
     def from_url(url):
-        if not url.startswith(OPEN_SPOTIFY_URL):
+        res = urlparse(url)
+        if res.netloc != OPEN_SPOTIFY_NETLOC:
             raise ValueError('invalid URL: ' + url)
-        tokens = url.split('/')[3:]
+        tokens = res.path[1:].split('/')
         return ResourceInfo._from_tokens(tokens, url)
 
     @staticmethod
