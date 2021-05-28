@@ -35,7 +35,7 @@ def test_tracks(client):
     assert tracks[0]['type'] == tracks[1]['type'] == 'track'
     assert tracks[0]['id'] == '3Fcfwhm8oRrBvBZ8KGhtea'
     assert tracks[1]['id'] == '0aWMVrwxPNYkKmFthzmpRi'
-    assert tracks[1]['name'] == 'Blue in Green'
+    assert tracks[1]['name'] == 'Blue in Green (feat. John Coltrane & Bill Evans)'
 
 
 def test_audio_features(client):
